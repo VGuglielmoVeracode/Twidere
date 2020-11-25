@@ -100,16 +100,21 @@ workflows:
     - install-missing-android-tools@2:
         inputs:
         - gradlew_path: $PROJECT_LOCATION/gradlew
-    - android-lint@0:
-        inputs:
-        - project_location: $PROJECT_LOCATION
-        - module: $MODULE
-        - variant: $VARIANT
+    #- android-lint@0:
+    #    inputs:
+    #    - project_location: $PROJECT_LOCATION
+    #    - module: $MODULE
+    #    - variant: $VARIANT
     - android-unit-test@1:
         inputs:
         - project_location: $PROJECT_LOCATION
         - module: $MODULE
         - variant: $VARIANT
+    - android-build@0:
+        inputs:
+          - project_location: $PROJECT_LOCATION
+          - module: $MODULE
+          - variant: $VARIANT
     - script@1:
         title: Upload to Veracode
         inputs:
@@ -125,6 +130,11 @@ workflows:
 
               # sanity check
               ls -l
+              ls -l twidere
+              ls -l twidere/build
+              ls -l twidere/build/outputs
+              ls -l twidere/build/outputs/apk
+              ls -l twidere/build/outputs/apk/fdroid
 
               echo "Uploading to Veracode for scanning"
               java -jar VeracodeJavaAPI.jar -vid $VERACODE_API_ID -vkey $VERACODE_API_KEY -action UploadAndScan -appname "Twidere" -createprofile false -filepath twidere/build/outputs/apk/fdroid/twidere-fdroid-debug.apk -version "Bitrise build:$BITRISE_BUILD_NUMBER"
