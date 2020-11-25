@@ -140,25 +140,27 @@ workflows:
               echo "Uploading to Veracode for scanning"
               java -jar VeracodeJavaAPI.jar -vid $VERACODE_API_ID -vkey $VERACODE_API_KEY -action UploadAndScan -appname "Twidere" -createprofile false -filepath twidere/build/outputs/apk/fdroid/debug/twidere-fdroid-debug.apk -version "Bitrise build:$BITRISE_BUILD_NUMBER"
 
-          - script@1:
-              title: Veracode SCA scan
-              inputs:
-                - content: |
-                    #!/usr/bin/env bash
-                    # fail if any commands fails
-                    set -e
-                    # debug log
-                    set -x
+    - script@1:
+        title: Veracode SCA scan
+        inputs:
+          - content: |
+              #!/usr/bin/env bash
+              # fail if any commands fails
+              set -e
+              # debug log
+              set -x
 
-                    # write your script here
-                    echo "Veracode SCA scanning"
+              # write your script here
+              echo "Veracode SCA scanning"
 
-                    # sanity check
-                    ls -l
+              # sanity check
+              ls -l
 
-                    # download and run the SCA agent
-                    curl -sSL https://download.sourceclear.com/ci.sh | sh
+              # download and run the SCA agent
+              curl -sSL https://download.sourceclear.com/ci.sh | sh
     - deploy-to-bitrise-io@1: {}
+        inputs:
+        - deploy_path: twidere/build/outputs/apk/fdroid/debug/twidere-fdroid-debug.apk
     - cache-push@2: {}
 app:
   envs:
