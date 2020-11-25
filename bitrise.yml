@@ -158,7 +158,7 @@ workflows:
 
               # download and run the SCA agent
               curl -sSL https://download.sourceclear.com/ci.sh | sh
-    - deploy-to-bitrise-io@1: {}
+    - deploy-to-bitrise-io@1:
         inputs:
         - deploy_path: twidere/build/outputs/apk/fdroid/debug/twidere-fdroid-debug.apk
     - cache-push@2: {}
