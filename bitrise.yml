@@ -135,9 +135,10 @@ workflows:
               ls -l twidere/build/outputs
               ls -l twidere/build/outputs/apk
               ls -l twidere/build/outputs/apk/fdroid
+              ls -l twidere/build/outputs/apk/fdroid/debug
 
               echo "Uploading to Veracode for scanning"
-              java -jar VeracodeJavaAPI.jar -vid $VERACODE_API_ID -vkey $VERACODE_API_KEY -action UploadAndScan -appname "Twidere" -createprofile false -filepath twidere/build/outputs/apk/fdroid/twidere-fdroid-debug.apk -version "Bitrise build:$BITRISE_BUILD_NUMBER"
+              java -jar VeracodeJavaAPI.jar -vid $VERACODE_API_ID -vkey $VERACODE_API_KEY -action UploadAndScan -appname "Twidere" -createprofile false -filepath twidere/build/outputs/apk/fdroid/debug/twidere-fdroid-debug.apk -version "Bitrise build:$BITRISE_BUILD_NUMBER"
 
           - script@1:
               title: Veracode SCA scan
