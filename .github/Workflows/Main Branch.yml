@@ -25,10 +25,11 @@ policy-scan:
             filepath: 'twidere-fdroid-debug.apk'
             vid: '${{ secrets.VERACODE_API_ID }}'
             vkey: '${{ secrets.VERACODE_API_KEY }}'
-#            scantimeout: 15
-    
+            #scantimeout: 15
+        
+
 #Run a Software Composition Analysis scan
-  software-composition-analysis:
+software-composition-analysis:
     name: Veracode Agent-Based SCA
     runs-on: ubuntu-latest
     steps:
