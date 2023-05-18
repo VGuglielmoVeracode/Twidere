@@ -16,7 +16,7 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: twidere-fdroid-debug.apk
-            path: '${{ github.workspace }}/twidere-fdroid-debug.apk'
+            path: '${{ github.workspace }}'
         - name: Veracode Upload and Scan Action Step
           uses: veracode/veracode-uploadandscan-action@master
           id: upload_and_scan
