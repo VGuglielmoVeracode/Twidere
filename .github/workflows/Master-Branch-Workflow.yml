@@ -23,7 +23,7 @@ jobs:
           with:
             appname: 'Twidere'
             version: '${{ github.run_id }}'
-            filepath: 'veracode-output/twidere-fdroid-debug.apk'
+            filepath: './veracode-output/twidere-fdroid-debug.apk'
             vid: '${{ secrets.VERACODE_API_ID }}'
             vkey: '${{ secrets.VERACODE_API_KEY }}'
             #scantimeout: 15
