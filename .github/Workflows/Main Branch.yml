@@ -2,11 +2,11 @@ name: Master Branch Workflow
  
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   
-  policy-scan:
+policy-scan:
       name: Veracode Static Analysis
       runs-on: ubuntu-latest
       steps:
