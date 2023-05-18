@@ -11,12 +11,12 @@ jobs:
       name: Veracode Static Analysis
       runs-on: ubuntu-latest
       steps:
-        # - uses: actions/checkout@v3
-        # - name: get apk
-        #   uses: actions/download-artifact@v3
-        #   with:
-        #     name: twidere-fdroid-debug.apk
-        #     path: ./veracode-output/twidere-fdroid.debug.apk
+        - uses: actions/checkout@v3
+        - name: get apk
+          uses: actions/download-artifact@v3
+          with:
+            name: twidere-fdroid-debug.apk
+            path: 'Twidere/veracode-output/twidere-fdroid.debug.apk'
         - name: Veracode Upload and Scan Action Step
           uses: veracode/veracode-uploadandscan-action@master
           id: upload_and_scan
