@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [ master ]
 
-policy-scan:
+jobs:
+  policy-scan:
       name: Veracode Static Analysis
       runs-on: ubuntu-latest
       steps:
@@ -29,7 +30,7 @@ policy-scan:
         
 
 #Run a Software Composition Analysis scan
-software-composition-analysis:
+  software-composition-analysis:
     name: Veracode Agent-Based SCA
     runs-on: ubuntu-latest
     steps:
